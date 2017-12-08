@@ -1,0 +1,6 @@
+<resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey"></string>
+    <string name="app_name">TNM</string>
+    <string name="facebook_app_id">120637441985895</string>
+    <string name="fb_login_protocol_scheme">fb120637441985895</string>
+</resources>

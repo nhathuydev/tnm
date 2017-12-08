@@ -1,0 +1,10 @@
+{
+  "name": "TNM",
+  "displayName": "TNM",
+  "expo": {
+    "slug": "TNM",
+    "name": "TNM",
+    "sdkVersion": "18.0.0",
+    "entryPoint": "/home/huy/dev/TNM/.vscode/exponentIndex.js"
+  }
+}

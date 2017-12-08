@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "981025764178",
+    "firebase_url": "https://mypop-ccf55.firebaseio.com",
+    "project_id": "mypop-ccf55",
+    "storage_bucket": "mypop-ccf55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981025764178:android:73e3d0f2afb6f69f",
+        "android_client_info": {
+          "package_name": "com.tnm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981025764178-cg2r0ddek21j16lml428nit9ceqrjhhn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7AuOxyTOJ5yRTWNv0yQBkhB6Dm3iU06Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
