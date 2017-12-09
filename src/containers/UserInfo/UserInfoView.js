@@ -4,6 +4,7 @@ import { View, Image, Text, TouchableOpacity } from 'react-native';
 import style from './style';
 
 const FBSDK = require('react-native-fbsdk');
+
 const {
   LoginButton,
   AccessToken,
@@ -21,7 +22,7 @@ class UserInfoView extends React.Component {
 
   render() {
     const { user } = this.props;
-    if (!user) return this.renderLogin();
+    if (true) return this.renderLogin();
     return (
       <View style={{ flex: 1 }}>
         <View style={style.topView}>
@@ -52,7 +53,7 @@ class UserInfoView extends React.Component {
           <TouchableOpacity
             style={{
               flex: 1,
-            // backgroundColor: 'blue',
+              // backgroundColor: 'blue',
               alignItems: 'center',
               justifyContent: 'center',
             }}
@@ -63,13 +64,13 @@ class UserInfoView extends React.Component {
                 color: 'white',
               }}
             >
-            Bookmark
+              Bookmark
           </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
               flex: 1,
-          // backgroundColor: 'blue',
+              // backgroundColor: 'blue',
               alignItems: 'center',
               justifyContent: 'center',
             }}
@@ -80,7 +81,7 @@ class UserInfoView extends React.Component {
                 color: 'white',
               }}
             >
-          Setting
+              Setting
         </Text>
           </TouchableOpacity>
         </View>
@@ -94,27 +95,26 @@ class UserInfoView extends React.Component {
         <LoginButton
           // publishPermissions={['public_profile']}
           onLoginFinished={
-          (error, result) => {
-            if (error) {
-              alert(`login has error: ${result.error}`);
-            } else if (result.isCancelled) {
-              alert('login is cancelled.');
-            } else {
-              AccessToken.getCurrentAccessToken().then(
-                (data) => {
-                  console.log(data.accessToken.toString());
-                  loginSocial(data.accessToken.toString())
-                    .then(data => {
-                      alert(JSON.stringify(data));
-                    })
-                    .catch(error => {
-                      console.log(error)
-                    })
-                }
-              );
+            (error, result) => {
+              if (error) {
+                // alert(`login has error: ${result.error}`);
+              } else if (result.isCancelled) {
+                // alert('login is cancelled.');
+              } else {
+                AccessToken.getCurrentAccessToken().then(
+                  (data) => {
+                    loginSocial(data.accessToken.toString())
+                      .then(() => {
+                        // alert(JSON.stringify(data));
+                      })
+                      .catch(() => {
+                        // console.log(error)
+                      });
+                  }
+                );
+              }
             }
           }
-        }
           onLogoutFinished={() => alert('logout.')}
         />
       </View>

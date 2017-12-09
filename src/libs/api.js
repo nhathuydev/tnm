@@ -10,7 +10,7 @@ const METHOD = {
 };
 const ENDPOINT = {
   POST_LIST: 'post',
-  LOGIN: 'login/facebook?access_token=EAABtuBfgTWcBACqDseYtBQ6f2kOm3zUSpC6YiX2baSSOuI8ZBBUG8ZCF65CG97qZALBQkjxlUsVIffOkUYT5LNLfnTfk8Y0rqjVjhCFZAwtk2ZBJWhjsC9QgdO6CjTkxnevXv3JvZCcJx3EfvV69QibA6uP0ZC8XmKEwKHB1BZCjSKYmvJhGxirFpekE3YzTbSdd67qyBeWrSZCcA2tpZA2pu1RVT7ECOvS1oZD',
+  LOGIN: 'login/',
 };
 const BASE_URL = 'http://192.168.80.107/api/';
 
@@ -57,16 +57,16 @@ export function getPost(page = 1) {
       });
   });
 }
-export function loginSocial(accessToken, type = '') {
+export function loginSocial(accessToken, type = 'facebook') {
   return dispatch => new Promise((resolve, reject) => {
-    fetchData(METHOD.GET, ENDPOINT.LOGIN + type, { access_token: accessToken }, { access_token: accessToken })
-    .then((data) => {
-      dispatch(updateUser(data));
-      resolve(data);
-    })
-    .catch((error) => {
-      reject(error);
-    });
+    fetchData(METHOD.GET, ENDPOINT.LOGIN + type, { params: { access_token: accessToken } })
+      .then((data) => {
+        dispatch(updateUser(data));
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
 }
 export function getPosttttttttttttt() {
