@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, TouchableOpacity, Image, StyleSheet, Text } from 'react-native';
+import { View, TouchableOpacity, TouchableHighlight, Image, StyleSheet, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const style = StyleSheet.create({
   btn: {
@@ -17,7 +18,7 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     borderColor: 'grey',
     paddingHorizontal: 8,
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 5,
   },
   btnImage: {
@@ -26,61 +27,89 @@ const style = StyleSheet.create({
     resizeMode: 'contain',
   },
 });
-const StatusCard = props => (
-  <View
-    style={{
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      paddingHorizontal: 16,
-      marginTop: 8,
-    }}
-  >
-    <View
-      style={{ flexDirection: 'row' }}
-    >
-      <TouchableOpacity
-        style={style.btn}
-      >
-        <Image
-          source={{ uri: 'https://emojipedia-us.s3.amazonaws.com/thumbs/120/mozilla/36/clapping-hands-sign_1f44f.png' }}
-          style={style.btnImage}
-        />
-        <Text>{props.clap_count}</Text>
-      </TouchableOpacity>
+class StatusCard extends React.Component {
+  static propTypes = {
+    clap_count: PropTypes.number,
+    onClap: PropTypes.func.isRequired,
+    isLiked: PropTypes.bool,
+  };
+  static defaultProps = {
+    clap_count: 0,
+    isLiked: false,
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      clapped: props.isLiked,
+    };
+  }
 
-      {
-        false &&
-        <TouchableOpacity
-          style={style.btn}
+  render() {
+    const { onClap, clap_count } = this.props;
+    const { clapped } = this.state;
+
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingHorizontal: 16,
+          marginTop: 8,
+        }}
+      >
+        <View
+          style={{ flexDirection: 'row' }}
         >
-          <Image
-            source={{ uri: 'http://cdn.shopify.com/s/files/1/1061/1924/products/Praying_Emoji_grande.png?v=1480481047' }}
-            style={style.btnImage}
+          <TouchableOpacity
+            style={style.btn}
+            activeOpacity={0.5}
+            onPress={() => this.setState({
+              clapped: true,
+            }, () => onClap())}
+          >
+            <Icon
+              name={'thumb-up'}
+              size={30}
+              style={{
+                color: !clapped ? 'grey' : 'green',
+              }}
+            />
+            <Text
+              style={{
+                fontSize: 24,
+                textAlign: 'center',
+                textAlignVertical: 'center',
+                marginLeft: 8,
+                color: !clapped ? 'grey' : 'green',
+              }}
+            >
+              {clap_count}
+            </Text>
+          </TouchableOpacity>
+
+
+          <TouchableOpacity
+            style={[style.btn, { borderColor: 'transparent' }]}
+          >
+            <Icon
+              name={'more-vert'}
+              size={30}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <TouchableHighlight
+          onPress={() => alert(111)}
+          style={style.btnShare}
+        >
+          <Icon
+            name={'share'}
+            size={30}
           />
-        </TouchableOpacity>
-      }
+        </TouchableHighlight>
+      </View>
+    );
+  }
+}
 
-      <TouchableOpacity
-        style={[style.btn, { borderColor: 'transparent' }]}
-      >
-        <Image
-          source={{ uri: 'https://cdn1.iconfinder.com/data/icons/banking-3/100/bank-17-512.png' }}
-          style={style.btnImage}
-        />
-      </TouchableOpacity>
-    </View>
-
-    <TouchableOpacity
-      style={style.btnShare}
-    >
-      <Text>Share</Text>
-    </TouchableOpacity>
-  </View>
-);
-StatusCard.propTypes = {
-  clap_count: PropTypes.number,
-};
-StatusCard.defaultProps = {
-  clap_count: 0,
-};
 export default StatusCard;

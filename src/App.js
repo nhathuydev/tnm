@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import CodePush from 'react-native-code-push';
-import TabRouter from './routers/TabRouter';
+// import TabRouter from './routers/TabRouter';
 import StackRouter from './routers/MainStackRouter';
+
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class App extends Component {
       }
     );
   }
-  render = () => <TabRouter />
+  render = () => <StackRouter />
 }
 
 export default App;

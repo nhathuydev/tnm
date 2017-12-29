@@ -3,8 +3,8 @@ import { FlatList, Text, TouchableOpacity } from 'react-native';
 
 const Tags = ({ data }) => (
   <FlatList
-    horizontal
-    scrollEnabled={false}
+    // horizontal
+    // scrollEnabled={false}
     keyExtractor={item => item.id}
     data={data}
     contentContainerStyle={{
@@ -13,8 +13,8 @@ const Tags = ({ data }) => (
     renderItem={({ item }) => (
       <TouchableOpacity
         style={{
-          paddingVertical: 8,
-          paddingHorizontal: 4,
+          // paddingVertical: 4,
+          paddingHorizontal: 8,
         }}
       >
         <Text
@@ -23,7 +23,7 @@ const Tags = ({ data }) => (
             fontWeight: '500',
           }}
         >
-          {item.name}
+          #{item.name}
         </Text>
       </TouchableOpacity>
     )}

@@ -1,17 +1,25 @@
 import { TabNavigator } from 'react-navigation';
-import { Home, UserInfo } from '../containers';
+import { UserInfo, Home, Hot } from '../containers';
 
 const TabNav = TabNavigator({
-  UserInfo: {
-    screen: UserInfo,
-  },
   Home: {
     screen: Home,
+  },
+  Hot: {
+    screen: Hot,
+  },
+  UserInfo: {
+    screen: UserInfo,
   },
 },
   {
     tabBarPosition: 'bottom',
     animationEnabled: true,
+    lazy: true,
+    tabBarOptions: {
+      showIcon: true,
+      showLabel: false,
+    },
   });
 
 export default TabNav;

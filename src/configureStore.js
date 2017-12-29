@@ -12,7 +12,7 @@ export default function configureStore(onCompletion) {
     applyMiddleware(thunk, promise),
     autoRehydrate(),
     devTools({
-      name: 'nativestarterkit', realtime: true,
+      name: 'tnm-app', realtime: true,
     }),
   );
 
